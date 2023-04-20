@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "166598225004",
+    "project_id": "register-app-ffa62",
+    "storage_bucket": "register-app-ffa62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166598225004:android:615b562790de27652f7c49",
+        "android_client_info": {
+          "package_name": "com.example.register_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "166598225004-cmtu81rhf43qrghc909rms0rgp1rfm22.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAWTHp7YgoznlOxB_h4REA97GxNyHQC8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166598225004-cmtu81rhf43qrghc909rms0rgp1rfm22.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
