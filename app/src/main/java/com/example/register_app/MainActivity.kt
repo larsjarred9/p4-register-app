@@ -67,7 +67,8 @@ class MainActivity : AppCompatActivity() {
                                     val userMap = hashMapOf(
                                         "displayName" to displayName,
                                         "email" to email,
-                                        "timestamp" to System.currentTimeMillis()
+                                        "timestamp" to System.currentTimeMillis(),
+                                        "blocked" to null
                                     )
                                     db.collection("users").document(user?.uid.toString())
                                         .set(userMap).addOnFailureListener { exception ->
