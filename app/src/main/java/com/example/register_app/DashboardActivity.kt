@@ -44,7 +44,7 @@ class DashboardActivity : AppCompatActivity() {
                         val format = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault())
                         val formatedTimestamp = format.format(date)
 
-                        messageField.text = "Hi there ${displayName},\n\nEmail:${email}\nTimestamp: ${formatedTimestamp}"
+                        messageField.text = "Hi there ${displayName},\n\nEmail: ${email}\nTimestamp: ${formatedTimestamp}"
                     } else {
                         // set the message text field to an error message
                         messageField.text = "Could not get user data"
