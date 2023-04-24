@@ -80,21 +80,8 @@ class LoginActivity : AppCompatActivity() {
                                         val user = auth.currentUser
                                         if (user != null) {
                                             if (user.isEmailVerified) {
-                                                if(attempt > 3) {
-                                                    // get user from db with email to update blocked field
-                                                    db.collection("users")
-                                                        .whereEqualTo("email", emailField.text.toString())
-                                                        .get()
-                                                        .addOnSuccessListener { querySnapshot ->
-                                                            for (document in querySnapshot) {
-                                                                db.collection("users").document(document.id).update("blocked", true)
-                                                            }
-                                                            errorText.text = "You have exceeded the number of 3 attempts"
-                                                        }
-                                                } else {
-                                                    // email is verified
-                                                    dashboard(user.uid)
-                                                }
+                                                // email is verified
+                                                dashboard(user.uid)
                                             } else {
                                                 // email is not verified
                                                 errorText.text = "Please verify by clicking the link sent to your email"
@@ -105,9 +92,26 @@ class LoginActivity : AppCompatActivity() {
                                         val message = task.exception?.message
                                         errorText.text = message
                                     }
+                                }.addOnFailureListener { exception ->
+                                    if(attempt > 3) {
+                                        // get user from db with email to update blocked field
+                                        db.collection("users")
+                                            .whereEqualTo("email", emailField.text.toString())
+                                            .get()
+                                            .addOnSuccessListener { querySnapshot ->
+                                                for (document in querySnapshot) {
+                                                    db.collection("users").document(document.id).update("blocked", System.currentTimeMillis())
+                                                }
+                                                errorText.text = "You have been blocked for unusual activity on your account."
+                                            }
+                                    } else {
+                                        errorText.text = "Het wachtwoord is onjuist je hebt nog " + (3 - attempt) + " pogingen over"
+                                    }
                                 }
                             }
                         }
+                    } .addOnFailureListener { exception ->
+                        errorText.text = exception.message
                     }
             } else {
                 // email or password field is empty
